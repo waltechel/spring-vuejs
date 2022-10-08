@@ -1,14 +1,14 @@
-export default {  
-  created () {
+export default {
+  created() {
     console.log(`${this.$options.name} created`)
   },
-  beforeMount () {
+  beforeMount() {
     console.log(`${this.$options.name} about to mount`)
   },
-  mounted () {
+  mounted() {
     console.log(`${this.$options.name} mounted`)
-  },  
-  destroyed () {
+  },
+  destroyed() {
     console.log(`${this.$options.name} destroyed`)
   }
 }

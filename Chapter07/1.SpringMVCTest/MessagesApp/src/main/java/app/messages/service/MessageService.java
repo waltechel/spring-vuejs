@@ -10,17 +10,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 public class MessageService {
 
-  @Autowired
-  private MessageRepository repository;
+	@Autowired
+	private MessageRepository repository;
 
-  @Transactional(readOnly = true)
-  public List<Message> getMessages() {
-    return repository.getMessages();
-  }
+	@Transactional(readOnly = true)
+	public List<Message> getMessages() {
+		return repository.getMessages();
+	}
 
-  @SecurityCheck
-  @Transactional(noRollbackFor = { UnsupportedOperationException.class })
-  public Message save(String text) {
-    return repository.saveMessage(new Message(text));
-  }
+	@SecurityCheck
+	@Transactional(noRollbackFor = { UnsupportedOperationException.class })
+	public Message save(String text) {
+		return repository.saveMessage(new Message(text));
+	}
 }

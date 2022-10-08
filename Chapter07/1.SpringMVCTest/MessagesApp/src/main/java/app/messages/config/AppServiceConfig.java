@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppServiceConfig {
-  @Bean
-  MessageService createService() {
-    return new MessageService();
-  }
+	@Bean
+	MessageService createService() {
+		return new MessageService();
+	}
 }

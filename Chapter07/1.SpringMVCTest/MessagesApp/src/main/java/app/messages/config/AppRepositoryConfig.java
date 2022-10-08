@@ -14,27 +14,27 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class AppRepositoryConfig {
 
-  @Autowired
-  private DataSource dataSource;
+	@Autowired
+	private DataSource dataSource;
 
-  @Bean
-  public MessageRepository createRepository() {
-    return new MessageRepository();
-  }
+	@Bean
+	public MessageRepository createRepository() {
+		return new MessageRepository();
+	}
 
-  @Bean
-  public LocalSessionFactoryBean sessionFactory() {
-    LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
-    sessionFactoryBean.setDataSource(dataSource);
-    sessionFactoryBean.setPackagesToScan("app.messages");
-    return sessionFactoryBean;
-  }
+	@Bean
+	public LocalSessionFactoryBean sessionFactory() {
+		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
+		sessionFactoryBean.setDataSource(dataSource);
+		sessionFactoryBean.setPackagesToScan("app.messages");
+		return sessionFactoryBean;
+	}
 
-  @Bean
-  public HibernateTransactionManager transactionManager() {
-    HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-    transactionManager.setSessionFactory(sessionFactory().getObject());
-    return transactionManager;
-  }
+	@Bean
+	public HibernateTransactionManager transactionManager() {
+		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+		transactionManager.setSessionFactory(sessionFactory().getObject());
+		return transactionManager;
+	}
 
 }

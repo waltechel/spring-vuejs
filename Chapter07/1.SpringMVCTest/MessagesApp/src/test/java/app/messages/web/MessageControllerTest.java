@@ -26,20 +26,19 @@ import app.messages.service.MessageService;
 @WebMvcTest(MessageController.class)
 public class MessageControllerTest {
 
-  @Autowired
-  private MockMvc mvc;
+	@Autowired
+	private MockMvc mvc;
 
-  @MockBean
-  private MessageService service;
+	@MockBean
+	private MessageService service;
 
-  @Test
-  public void getMessages_existingMessages_shouldReturnJsonArray() throws Exception {
-    Message firstMessage = new Message("First Message");
-    List<Message> allMessages = Arrays.asList(firstMessage);
-    when(service.getMessages()).thenReturn(allMessages);
-    mvc.perform(get("/api/messages").contentType(MediaType.APPLICATION_JSON))
-    .andExpect(status().isOk())
-    .andExpect(jsonPath("$", hasSize(1)))
-    .andExpect(jsonPath("$[0].text", is(firstMessage.getText())));
-  }
+	@Test
+	public void getMessages_existingMessages_shouldReturnJsonArray() throws Exception {
+		Message firstMessage = new Message("First Message");
+		List<Message> allMessages = Arrays.asList(firstMessage);
+		when(service.getMessages()).thenReturn(allMessages);
+		mvc.perform(get("/api/messages").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andExpect(jsonPath("$", hasSize(1)))
+				.andExpect(jsonPath("$[0].text", is(firstMessage.getText())));
+	}
 }

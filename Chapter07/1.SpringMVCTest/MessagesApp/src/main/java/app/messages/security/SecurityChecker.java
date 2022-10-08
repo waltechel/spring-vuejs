@@ -12,16 +12,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class SecurityChecker {
 
-  private static final Logger logger = LoggerFactory.getLogger(SecurityChecker.class);
+	private static final Logger logger = LoggerFactory.getLogger(SecurityChecker.class);
 
-  @Pointcut("@annotation(SecurityCheck)")
-  public void checkMethodSecurity() {}
+	@Pointcut("@annotation(SecurityCheck)")
+	public void checkMethodSecurity() {
+	}
 
-  @Around("checkMethodSecurity()")
-  public Object checkSecurity (ProceedingJoinPoint joinPoint) throws Throwable {
-    logger.debug("Checking method security...");
-    // TODO Implement security check logics here
-    Object result = joinPoint.proceed();
-    return result;
-  }
+	@Around("checkMethodSecurity()")
+	public Object checkSecurity(ProceedingJoinPoint joinPoint) throws Throwable {
+		logger.debug("Checking method security...");
+		// TODO Implement security check logics here
+		Object result = joinPoint.proceed();
+		return result;
+	}
 }

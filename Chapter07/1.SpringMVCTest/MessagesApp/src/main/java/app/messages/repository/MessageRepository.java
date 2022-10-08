@@ -10,18 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class MessageRepository {
 
 	@Autowired
-  private SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
-  public Message saveMessage(Message message) {
-    Session session = sessionFactory.getCurrentSession();
-    session.save(message);
-    return message;
-  }
+	public Message saveMessage(Message message) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(message);
+		return message;
+	}
 
-  public List<Message> getMessages() {
-    Session session = sessionFactory.getCurrentSession();
-    String hql = "from Message";
-    Query<Message> query = session.createQuery(hql, Message.class);
-    return query.list();
-  }
+	public List<Message> getMessages() {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from Message";
+		Query<Message> query = session.createQuery(hql, Message.class);
+		return query.list();
+	}
 }

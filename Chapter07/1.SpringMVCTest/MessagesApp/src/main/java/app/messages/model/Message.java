@@ -16,48 +16,50 @@ import javax.persistence.TemporalType;
 @Table(name = "messages")
 public class Message {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", nullable = false)
-  private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
+	private Integer id;
 
-  @Column(name = "text", nullable = false, length = 128)
-  private String text;
+	@Column(name = "text", nullable = false, length = 128)
+	private String text;
 
-  @Column(name = "created_date", nullable = false)
-  @Temporal(TemporalType.TIMESTAMP)
-  private Date createdDate;
+	@Column(name = "created_date", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdDate;
 
-  public Message() {
-  }
+	public Message() {
+	}
 
-  public Message(String text) {
-    this.text = text;
-    this.createdDate = new Date();
-  }
+	public Message(String text) {
+		this.text = text;
+		this.createdDate = new Date();
+	}
 
-  public Integer getId() {
-    return id;
-  }
+	public Integer getId() {
+		return id;
+	}
 
-  public String getText() {
-    return text;
-  }
+	public String getText() {
+		return text;
+	}
 
-  public Date getCreatedDate() {
-    return createdDate;
-  }
+	public Date getCreatedDate() {
+		return createdDate;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Message message = (Message) o;
-    return Objects.equals(id, message.id);
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Message message = (Message) o;
+		return Objects.equals(id, message.id);
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id);
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
 }
